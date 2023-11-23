@@ -1,7 +1,14 @@
 package main
 
-import "yizhan/calculate"
+import (
+	"syscall/js"
+	"yizhan/calculate"
+)
 
 func main() {
-	calculate.ProcessDayanTest()
+	window := js.Global()
+	window.Set("calculate", js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		return calculate.ExcuteJinjueZhan()
+	}))
+	select {}
 }

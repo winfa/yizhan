@@ -14,13 +14,18 @@ type GuaXiang struct {
 	percent float32
 }
 
-func processJinJueTest(targetNumber int, times int) {
+func ExcuteJinjueZhan() string {
+	jingJueNumbers := generateJingJueNumbers(30)
+	guaXiang := convertJingJueNumberToGuaXiang(jingJueNumbers)
+	return guaXiang
+}
+
+func ProcessJinJueTest(times int) {
 	guaXiangList := []GuaXiang{}
 	guaXiangMap := make(map[string]int)
 
 	for i := 0; i <= times; i++ {
-		JingJueNumbers := generateJingJueNumbers(targetNumber)
-		guaXiang := convertJingJueNumberToGuaXiang(JingJueNumbers)
+		guaXiang := ExcuteJinjueZhan()
 		guaXiangMap[guaXiang] = guaXiangMap[guaXiang] + 1
 	}
 
